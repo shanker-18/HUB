@@ -12,4 +12,7 @@ export default defineConfig({
     assetsDir: 'assets',
     sourcemap: false,
   },
+  preview: {
+    allowedHosts: ['shree-raga-swaad-ghar.onrender.com']
+  },
 });
