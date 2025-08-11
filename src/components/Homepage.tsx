@@ -21,8 +21,96 @@ import {
   Package,
   Sparkles,
   Crown,
-  Gift
+  Gift,
+  Zap,
+  Coffee
 } from 'lucide-react';
+
+// Custom CSS for enhanced styling
+const customStyles = `
+  .corporate-blue {
+    color: #1e40af;
+  }
+  .corporate-blue-bg {
+    background-color: #1e40af;
+  }
+  .corporate-blue-border {
+    border-color: #1e40af;
+  }
+  .corporate-blue-gradient {
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  }
+  .fast-moving-label {
+    background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 2px 4px rgba(220, 38, 38, 0.3);
+  }
+  .special-dish-label {
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 2px 4px rgba(30, 64, 175, 0.3);
+  }
+  .enhanced-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+  }
+  .enhanced-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-color: #1e40af;
+  }
+  .product-image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.75rem;
+  }
+  .product-image {
+    transition: transform 0.3s ease;
+  }
+  .product-image-container:hover .product-image {
+    transform: scale(1.05);
+  }
+  .label-badge {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 10;
+  }
+  .enhanced-header {
+    background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.95) 100%);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(220, 38, 38, 0.1);
+  }
+  .enhanced-button {
+    background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+    box-shadow: 0 4px 6px -1px rgba(220, 38, 38, 0.3);
+    transition: all 0.3s ease;
+  }
+  .enhanced-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px -3px rgba(220, 38, 38, 0.4);
+  }
+  .enhanced-section {
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+  }
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+`;
 
 const Homepage: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,25 +121,36 @@ const Homepage: React.FC = () => {
       id: 1,
       name: 'Traditional Mango Pickle',
       price: '₹299',
-      image: 'https://images.pexels.com/photos/4198015/pexels-photo-4198015.jpeg?auto=compress&cs=tinysrgb&w=500'
+      image: 'https://images.pexels.com/photos/4198015/pexels-photo-4198015.jpeg?auto=compress&cs=tinysrgb&w=500',
+      label: 'Fast Moving'
     },
     {
       id: 2,
       name: 'Aromatic Garam Masala',
       price: '₹199',
-      image: 'https://images.pexels.com/photos/4198793/pexels-photo-4198793.jpeg?auto=compress&cs=tinysrgb&w=500'
+      image: 'https://images.pexels.com/photos/4198793/pexels-photo-4198793.jpeg?auto=compress&cs=tinysrgb&w=500',
+      label: 'Fast Moving'
     },
     {
       id: 3,
       name: 'Pure Chekku Oil',
       price: '₹599',
-      image: 'https://images.pexels.com/photos/33783/olive-oil-salad-dressing-cooking-olive.jpg?auto=compress&cs=tinysrgb&w=500'
+      image: 'https://images.pexels.com/photos/33783/olive-oil-salad-dressing-cooking-olive.jpg?auto=compress&cs=tinysrgb&w=500',
+      label: 'Special Dish'
     },
     {
       id: 4,
       name: 'Homemade Ghee',
       price: '₹449',
-      image: 'https://images.pexels.com/photos/8751142/pexels-photo-8751142.jpeg?auto=compress&cs=tinysrgb&w=500'
+      image: 'https://images.pexels.com/photos/8751142/pexels-photo-8751142.jpeg?auto=compress&cs=tinysrgb&w=500',
+      label: 'Fast Moving'
+    },
+    {
+      id: 5,
+      name: 'Premium Coffee Powder',
+      price: '₹399',
+      image: 'https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=500',
+      label: 'Special Dish'
     }
   ];
 
@@ -95,6 +194,18 @@ const Homepage: React.FC = () => {
         'Mango Avakkai', 'Garlic Pickle', 'Fresh Boondi Pickle', 'Boondi with Curd'
       ],
       image: 'https://images.pexels.com/photos/4198015/pexels-photo-4198015.jpeg?auto=compress&cs=tinysrgb&w=500'
+    },
+    {
+      title: 'Premium Coffee Powder',
+      description: 'Freshly ground coffee powder for authentic taste',
+      icon: Coffee,
+      gradient: 'from-amber-400 to-brown-500',
+      items: [
+        'Filter Coffee Powder', 'Traditional Coffee Blend', 'Premium Arabica Coffee',
+        'South Indian Coffee Mix', 'Organic Coffee Powder', 'Spiced Coffee Blend',
+        'Cardamom Coffee Powder', 'Ginger Coffee Mix', 'Masala Coffee Powder'
+      ],
+      image: 'https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=500'
     }
   ];
 
@@ -144,8 +255,9 @@ const Homepage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-amber-50 to-green-50">
+      <style dangerouslySetInnerHTML={{ __html: customStyles }} />
       {/* Header */}
-      <header className="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-lg z-50">
+      <header className="fixed top-0 w-full enhanced-header shadow-lg z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-4">
@@ -165,8 +277,8 @@ const Homepage: React.FC = () => {
                 </div>
               </div>
               <div>
-                <span className="text-2xl font-bold text-amber-800">Shree Raga</span>
-                <div className="text-sm font-semibold text-green-600 -mt-1 tracking-wide">SWAAD GHAR</div>
+                <span className="text-2xl font-bold corporate-blue">Shree Raaga</span>
+                <div className="text-sm font-semibold text-red-600 -mt-1 tracking-wide">SWAAD GHAR</div>
               </div>
             </div>
             
@@ -175,12 +287,12 @@ const Homepage: React.FC = () => {
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="text-amber-700 hover:text-amber-900 hover:bg-amber-50 px-3 py-2 rounded-lg transition-all duration-300 font-semibold"
+                  className="text-red-600 hover:text-red-800 hover:bg-red-50 px-3 py-2 rounded-lg transition-all duration-300 font-semibold"
                 >
                   {item}
                 </a>
               ))}
-              <button className="flex items-center space-x-1 bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition-colors duration-300">
+              <button className="flex items-center space-x-1 bg-gradient-to-r from-red-600 to-red-500 text-white px-4 py-2 rounded-full hover:from-red-700 hover:to-red-600 transition-all duration-300 transform hover:scale-105">
                 <ShoppingCart className="h-4 w-4" />
                 <span>Cart</span>
               </button>
@@ -205,16 +317,16 @@ const Homepage: React.FC = () => {
           >
             <div className="px-4 py-2 space-y-2">
               {['Home', 'Categories', 'About', 'Contact'].map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="block py-3 px-4 text-amber-700 hover:text-amber-900 hover:bg-amber-50 rounded-lg transition-all duration-300 font-semibold"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item}
-                </a>
+                                  <a
+                    key={item}
+                    href={`#${item.toLowerCase()}`}
+                    className="block py-3 px-4 text-red-600 hover:text-red-800 hover:bg-red-50 rounded-lg transition-all duration-300 font-semibold"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item}
+                  </a>
               ))}
-              <button className="w-full flex items-center justify-center space-x-1 bg-green-600 text-white px-4 py-2 rounded-full">
+              <button className="w-full flex items-center justify-center space-x-1 bg-gradient-to-r from-red-600 to-red-500 text-white px-4 py-2 rounded-full">
                 <ShoppingCart className="h-4 w-4" />
                 <span>Cart</span>
               </button>
@@ -270,16 +382,16 @@ const Homepage: React.FC = () => {
             className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-amber-900"
           >
             Welcome to <br />
-            <span className="text-yellow-600">Shree Raga SWAAD GHAR</span>
+            <span className="corporate-blue">Shree Raaga SWAAD GHAR</span>
           </motion.h1>
           
           <motion.p
             initial={{ opacity: 0, y: 50 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-lg md:text-xl lg:text-2xl mb-8 leading-relaxed max-w-3xl mx-auto text-amber-800"
+            className="text-lg md:text-xl lg:text-2xl mb-8 leading-relaxed max-w-3xl mx-auto corporate-blue"
           >
-            At Shree Raaga Swaad Ghar, we bring the timeless taste of tradition to your table. From tangy homemade pickles and aromatic podis to fresh ready-mix powders, pure chekku oils, rich ghee, and handcrafted masala's— every product is made with purity, care, and love.
+            At Shree Raaga Swaad Ghar, we bring the timeless taste of tradition to your table. From tangy homemade pickles and aromatic podis to fresh ready-mix powders, pure chekku oils, rich ghee, handcrafted masala's, and premium coffee powder— every product is made with purity, care, and love.
           </motion.p>
           
           <motion.div
@@ -289,12 +401,12 @@ const Homepage: React.FC = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <a href="#categories" className="inline-block">
-              <button className="bg-yellow-500 hover:bg-yellow-400 text-amber-900 font-bold px-8 py-4 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+              <button className="bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white font-bold px-8 py-4 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
                 Explore Products
               </button>
             </a>
             <a href="#about" className="inline-block">
-              <button className="border-2 border-amber-700 text-amber-700 hover:bg-amber-700 hover:text-white font-bold px-8 py-4 rounded-full text-lg transition-all duration-300 transform hover:scale-105">
+              <button className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-bold px-8 py-4 rounded-full text-lg transition-all duration-300 transform hover:scale-105">
                 Our Story
               </button>
             </a>
@@ -303,8 +415,10 @@ const Homepage: React.FC = () => {
 
       </section>
 
+
+
       {/* Premium Brand Values Section */}
-      <section className="py-16 bg-white relative overflow-hidden">
+      <section className="py-16 enhanced-section relative overflow-hidden">
         <div className="watermark-logo">SWAAD</div>
         <div className="pattern-dots absolute inset-0"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -314,10 +428,10 @@ const Homepage: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold gradient-text mb-4">
-              Why Choose Shree Raga SWAAD GHAR?
+            <h2 className="text-3xl md:text-4xl font-bold corporate-blue mb-4">
+              Why Choose Shree Raaga SWAAD GHAR?
             </h2>
-            <p className="text-amber-700 max-w-2xl mx-auto">
+            <p className="text-red-600 max-w-2xl mx-auto font-medium">
               Experience the perfect blend of tradition and quality in every product
             </p>
           </motion.div>
@@ -361,8 +475,8 @@ const Homepage: React.FC = () => {
                   <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${value.color} mb-4 group-hover:scale-110 transition-transform duration-300 shimmer`}>
                     <IconComponent className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="text-lg font-bold text-amber-800 mb-2">{value.title}</h3>
-                  <p className="text-sm text-amber-600 leading-relaxed">{value.description}</p>
+                  <h3 className="text-lg font-bold corporate-blue mb-2">{value.title}</h3>
+                  <p className="text-sm text-red-600 leading-relaxed font-medium">{value.description}</p>
                 </motion.div>
               );
             })}
@@ -379,10 +493,10 @@ const Homepage: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-amber-800 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold corporate-blue mb-4">
               Our Categories
             </h2>
-            <p className="text-lg text-amber-700 max-w-2xl mx-auto">
+            <p className="text-lg text-red-600 max-w-2xl mx-auto font-medium">
               Discover our carefully curated collection of authentic Indian flavors
             </p>
           </motion.div>
@@ -391,7 +505,7 @@ const Homepage: React.FC = () => {
             variants={stagger}
             initial="initial"
             animate={categoriesInView ? "animate" : "initial"}
-            className="grid grid-cols-1 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6"
           >
             {categories.map((category, index) => {
               const IconComponent = category.icon;
@@ -399,68 +513,80 @@ const Homepage: React.FC = () => {
                 <motion.div
                   key={index}
                   variants={fadeInUp}
-                  className="group relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-3 bg-white border-2 border-transparent hover:border-yellow-400"
+                  className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 bg-white border border-gray-100 hover:border-red-400"
                 >
                   {/* Header with Gradient Background */}
-                  <div className={`relative h-48 bg-gradient-to-br ${category.gradient} p-6 flex flex-col justify-between`}>
+                  <div className={`relative h-40 bg-gradient-to-br ${category.gradient} p-4 flex flex-col justify-between`}>
                     {/* Decorative Pattern */}
-                    <div className="absolute inset-0 opacity-20">
-                      <div className="absolute top-4 right-4 w-16 h-16 border-2 border-white rounded-full"></div>
-                      <div className="absolute bottom-4 left-4 w-8 h-8 border border-white rounded-full"></div>
-                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 border border-white/50 rounded-full"></div>
-                    </div>
+                                          <div className="absolute inset-0 opacity-20">
+                        <div className="absolute top-2 right-2 w-12 h-12 border-2 border-white rounded-full"></div>
+                        <div className="absolute bottom-2 left-2 w-6 h-6 border border-white rounded-full"></div>
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 border border-white/50 rounded-full"></div>
+                      </div>
                     
                     {/* Icon and Title */}
                     <div className="relative z-10">
-                      <div className="flex items-center space-x-3 mb-2">
-                        <div className="p-3 bg-white/20 backdrop-blur-sm rounded-xl">
-                          <IconComponent className="h-6 w-6 text-white" />
+                      <div className="flex items-center space-x-2 mb-2">
+                        <div className="p-2 bg-white/20 backdrop-blur-sm rounded-lg">
+                          <IconComponent className="h-5 w-5 text-white" />
                         </div>
-                        <Crown className="h-5 w-5 text-yellow-300" />
+                        <Crown className="h-4 w-4 text-yellow-300" />
                       </div>
-                      <h3 className="text-2xl font-bold text-white leading-tight">{category.title}</h3>
+                      <h3 className="text-lg font-bold text-white leading-tight">{category.title}</h3>
                     </div>
                     
                     {/* Badge */}
                     <div className="relative z-10 self-start">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-white/20 text-white backdrop-blur-sm">
+                      <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-white/20 text-white backdrop-blur-sm">
                         {category.items.length} Products
                       </span>
                     </div>
                   </div>
                   
                   {/* Content Section */}
-                  <div className="p-6 space-y-4">
-                    <p className="text-amber-700 leading-relaxed">{category.description}</p>
+                  <div className="p-4 space-y-3">
+                    <p className="text-red-600 leading-relaxed font-medium">{category.description}</p>
                     
                     {/* Product Preview */}
                     <div className="space-y-2">
-                      <h4 className="font-semibold text-amber-800 text-sm uppercase tracking-wide">Featured Items:</h4>
-                      <div className="grid grid-cols-2 gap-2 text-xs">
-                        {category.items.slice(0, 6).map((item, itemIndex) => (
-                          <div key={itemIndex} className="flex items-center space-x-2 p-2 bg-amber-50 rounded-lg hover:bg-amber-100 transition-colors duration-200">
-                            <div className="w-2 h-2 bg-green-500 rounded-full flex-shrink-0"></div>
-                            <span className="text-amber-700 truncate font-medium">{item}</span>
-                          </div>
-                        ))}
+                      <h4 className="font-semibold corporate-blue text-xs uppercase tracking-wide">Featured Items:</h4>
+                      <div className="grid grid-cols-1 gap-1 text-xs">
+                        {category.items.slice(0, 6).map((item, itemIndex) => {
+                          const isFastMoving = ['Boondi Appalam', 'Sambar Podi', 'Mango Pickle', 'Coffee Powder'].includes(item);
+                          const isSpecialDish = ['Pure Chekku Oil', 'Homemade Ghee', 'Premium Coffee Powder'].includes(item);
+                                                      return (
+                              <div key={itemIndex} className="flex items-center justify-between p-1 bg-gray-50 rounded-md hover:bg-gray-100 transition-colors duration-200">
+                                <div className="flex items-center space-x-1 flex-1">
+                                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full flex-shrink-0"></div>
+                                  <span className="text-gray-700 truncate text-xs font-medium">{item}</span>
+                                </div>
+                                {isFastMoving && (
+                                  <span className="fast-moving-label text-xs ml-1 flex-shrink-0">Fast</span>
+                                )}
+                                {isSpecialDish && (
+                                  <span className="special-dish-label text-xs ml-1 flex-shrink-0">Special</span>
+                                )}
+                              </div>
+                            );
+                        })}
                       </div>
                       {category.items.length > 6 && (
-                        <p className="text-xs text-amber-600 font-medium">+{category.items.length - 6} more items</p>
+                        <p className="text-xs text-red-600 font-medium">+{category.items.length - 6} more</p>
                       )}
                     </div>
                     
                     {/* Action Button */}
-                    <div className="pt-4">
-                      <button className={`w-full bg-gradient-to-r ${category.gradient} hover:shadow-lg text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 group`}>
-                        <Package className="h-4 w-4" />
-                        <span>Explore Collection</span>
-                        <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <div className="pt-2">
+                      <button className={`w-full bg-gradient-to-r ${category.gradient} hover:shadow-lg text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 group text-sm`}>
+                        <Package className="h-3 w-3" />
+                        <span>Explore</span>
+                        <ChevronRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
                       </button>
                     </div>
                   </div>
                   
                   {/* Hover Effect Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-yellow-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-red-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none"></div>
                 </motion.div>
               );
             })}
@@ -501,24 +627,24 @@ const Homepage: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="space-y-6"
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-amber-800">
+              <h2 className="text-4xl md:text-5xl font-bold corporate-blue">
                 Our Heritage Story
               </h2>
-              <p className="text-lg text-amber-700 leading-relaxed">
+              <p className="text-lg text-red-600 leading-relaxed font-medium">
                 Prepared the age-old way with handpicked ingredients and no artificial additives, our foods carry the true flavor of our heritage, straight from our kitchen to yours.
               </p>
-              <p className="text-lg text-amber-700 leading-relaxed">
+              <p className="text-lg text-red-600 leading-relaxed font-medium">
                 Every product at Shree Raaga Swaad Ghar tells a story of tradition, passed down through generations of culinary expertise and refined with modern care.
               </p>
               
               <div className="grid grid-cols-2 gap-6 pt-6">
                 <div className="text-center">
                   <Award className="h-12 w-12 text-yellow-500 mx-auto mb-2" />
-                  <p className="font-semibold text-amber-800">Premium Quality</p>
+                  <p className="font-semibold corporate-blue">Premium Quality</p>
                 </div>
                 <div className="text-center">
                   <Leaf className="h-12 w-12 text-green-600 mx-auto mb-2" />
-                  <p className="font-semibold text-amber-800">Natural Ingredients</p>
+                  <p className="font-semibold corporate-blue">Natural Ingredients</p>
                 </div>
               </div>
             </motion.div>
@@ -528,7 +654,7 @@ const Homepage: React.FC = () => {
 
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gradient-to-r from-green-600 via-amber-600 to-green-600">
+      <section id="contact" className="py-20 corporate-blue-gradient">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -539,7 +665,7 @@ const Homepage: React.FC = () => {
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Get In Touch
             </h2>
-            <p className="text-xl text-white/90 max-w-2xl mx-auto">
+            <p className="text-xl text-white/95 max-w-2xl mx-auto font-medium">
               Ready to experience authentic flavors? Contact us today!
             </p>
           </motion.div>
@@ -555,16 +681,16 @@ const Homepage: React.FC = () => {
                 <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
                 <div className="space-y-4">
                   <div className="flex items-center space-x-4">
-                    <Phone className="h-6 w-6 text-yellow-300" />
-                    <span className="text-white text-lg">+91 12345 67890</span>
+                    <Phone className="h-6 w-6 text-red-300" />
+                    <span className="text-white text-lg font-medium">+91 12345 67890</span>
                   </div>
                   <div className="flex items-center space-x-4">
-                    <Mail className="h-6 w-6 text-yellow-300" />
-                    <span className="text-white text-lg">info@shreeragaswaadghar.com</span>
+                    <Mail className="h-6 w-6 text-red-300" />
+                    <span className="text-white text-lg font-medium">info@shreeragaswaadghar.com</span>
                   </div>
                   <div className="flex items-center space-x-4">
-                    <MapPin className="h-6 w-6 text-yellow-300" />
-                    <span className="text-white text-lg">Traditional Kitchen, India</span>
+                    <MapPin className="h-6 w-6 text-red-300" />
+                    <span className="text-white text-lg font-medium">Traditional Kitchen, India</span>
                   </div>
                 </div>
               </div>
@@ -581,21 +707,21 @@ const Homepage: React.FC = () => {
                   <input
                     type="text"
                     placeholder="Your Name"
-                    className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-yellow-400"
+                    className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-red-400"
                   />
                   <input
                     type="email"
                     placeholder="Your Email"
-                    className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-yellow-400"
+                    className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-red-400"
                   />
                   <textarea
                     rows={4}
                     placeholder="Your Message"
-                    className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-yellow-400 resize-none"
+                    className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-red-400 resize-none"
                   ></textarea>
                   <button
                     type="submit"
-                    className="w-full bg-yellow-500 hover:bg-yellow-400 text-amber-900 font-bold py-3 px-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105"
+                    className="w-full bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white font-bold py-3 px-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105"
                   >
                     Send Message
                   </button>
@@ -607,25 +733,25 @@ const Homepage: React.FC = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-r from-amber-900 via-green-900 to-amber-900 text-white">
+      <footer className="bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div>
-              <div className="flex items-center space-x-2 mb-6">
-                <Leaf className="h-8 w-8 text-yellow-400" />
-                <span className="text-xl font-bold">Shree Raga SWAAD GHAR</span>
-              </div>
-              <p className="text-amber-200 leading-relaxed">
+                              <div className="flex items-center space-x-2 mb-6">
+                  <Coffee className="h-8 w-8 text-red-400" />
+                  <span className="text-xl font-bold">Shree Raaga SWAAD GHAR</span>
+                </div>
+              <p className="text-gray-300 leading-relaxed font-medium">
                 Bringing timeless taste of tradition to your table with authentic Indian flavors made with love and care.
               </p>
             </div>
             
             <div>
-              <h4 className="text-lg font-semibold mb-4 text-yellow-400">Quick Links</h4>
+              <h4 className="text-lg font-semibold mb-4 text-red-400">Quick Links</h4>
               <ul className="space-y-2">
                 {['Home', 'Categories', 'About Us', 'Contact', 'Privacy Policy'].map((link) => (
                   <li key={link}>
-                    <a href="#" className="text-amber-200 hover:text-yellow-400 transition-colors duration-300">
+                    <a href="#" className="text-gray-300 hover:text-red-400 transition-colors duration-300">
                       {link}
                     </a>
                   </li>
@@ -634,49 +760,37 @@ const Homepage: React.FC = () => {
             </div>
             
             <div>
-              <h4 className="text-lg font-semibold mb-4 text-yellow-400">Contact Info</h4>
+              <h4 className="text-lg font-semibold mb-4 text-red-400">Contact Info</h4>
               <div className="space-y-3">
                 <div className="flex items-center space-x-2">
-                  <Phone className="h-4 w-4 text-yellow-400" />
-                  <span className="text-amber-200">+91 12345 67890</span>
+                  <Phone className="h-4 w-4 text-red-400" />
+                  <span className="text-gray-300">+91 12345 67890</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Mail className="h-4 w-4 text-yellow-400" />
-                  <span className="text-amber-200">info@shreeragaswaadghar.com</span>
+                  <Mail className="h-4 w-4 text-red-400" />
+                  <span className="text-gray-300">info@shreeragaswaadghar.com</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <MapPin className="h-4 w-4 text-yellow-400" />
-                  <span className="text-amber-200">Traditional Kitchen, India</span>
+                  <MapPin className="h-4 w-4 text-red-400" />
+                  <span className="text-gray-300">Traditional Kitchen, India</span>
                 </div>
               </div>
             </div>
             
             <div>
-              <h4 className="text-lg font-semibold mb-4 text-yellow-400">Follow Us</h4>
+              <h4 className="text-lg font-semibold mb-4 text-red-400">Follow Us</h4>
               <div className="flex space-x-4">
-                <Facebook className="h-6 w-6 text-amber-200 hover:text-yellow-400 cursor-pointer transition-colors duration-300" />
-                <Instagram className="h-6 w-6 text-amber-200 hover:text-yellow-400 cursor-pointer transition-colors duration-300" />
-                <Twitter className="h-6 w-6 text-amber-200 hover:text-yellow-400 cursor-pointer transition-colors duration-300" />
+                <Facebook className="h-6 w-6 text-gray-300 hover:text-red-400 cursor-pointer transition-colors duration-300" />
+                <Instagram className="h-6 w-6 text-gray-300 hover:text-red-400 cursor-pointer transition-colors duration-300" />
+                <Twitter className="h-6 w-6 text-gray-300 hover:text-red-400 cursor-pointer transition-colors duration-300" />
               </div>
-              <div className="mt-6">
-                <p className="text-sm text-amber-200 mb-2">Subscribe to our newsletter</p>
-                <div className="flex">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="flex-1 px-3 py-2 bg-white/10 border border-amber-300 rounded-l-lg text-white placeholder-amber-300 focus:outline-none focus:border-yellow-400"
-                  />
-                  <button className="bg-yellow-500 hover:bg-yellow-400 text-amber-900 px-4 py-2 rounded-r-lg font-semibold transition-colors duration-300">
-                    Subscribe
-                  </button>
-                </div>
-              </div>
+
             </div>
           </div>
           
-          <div className="border-t border-amber-700 mt-12 pt-8 text-center">
-            <p className="text-amber-300">
-              © 2025 Shree Raga SWAAD GHAR. All rights reserved. Made with ❤️ for traditional flavors.
+          <div className="border-t border-gray-700 mt-12 pt-8 text-center">
+            <p className="text-gray-300">
+              © 2025 Shree Raaga SWAAD GHAR. All rights reserved. Made with ❤️ for traditional flavors.
             </p>
           </div>
         </div>
