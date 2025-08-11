@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import {
   Menu,
   X,
   ShoppingCart,
-  Star,
+  
   ChevronRight,
   Phone,
   Mail,
@@ -16,13 +16,12 @@ import {
   Heart,
   Leaf,
   Award,
-  Users,
-  ChevronLeft,
+  
   Package,
   Sparkles,
   Crown,
   Gift,
-  Zap,
+  
   Coffee
 } from 'lucide-react';
 
@@ -110,56 +109,26 @@ const customStyles = `
   .text-shadow {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
+  .brand-duo-text {
+    background: linear-gradient(135deg, #dc2626 0%, #1e40af 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 `;
 
 const Homepage: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
+  // carousel state reserved for future use
 
-  const featuredProducts = [
-    {
-      id: 1,
-      name: 'Traditional Mango Pickle',
-      price: '₹299',
-      image: 'https://images.pexels.com/photos/4198015/pexels-photo-4198015.jpeg?auto=compress&cs=tinysrgb&w=500',
-      label: 'Fast Moving'
-    },
-    {
-      id: 2,
-      name: 'Aromatic Garam Masala',
-      price: '₹199',
-      image: 'https://images.pexels.com/photos/4198793/pexels-photo-4198793.jpeg?auto=compress&cs=tinysrgb&w=500',
-      label: 'Fast Moving'
-    },
-    {
-      id: 3,
-      name: 'Pure Chekku Oil',
-      price: '₹599',
-      image: 'https://images.pexels.com/photos/33783/olive-oil-salad-dressing-cooking-olive.jpg?auto=compress&cs=tinysrgb&w=500',
-      label: 'Special Dish'
-    },
-    {
-      id: 4,
-      name: 'Homemade Ghee',
-      price: '₹449',
-      image: 'https://images.pexels.com/photos/8751142/pexels-photo-8751142.jpeg?auto=compress&cs=tinysrgb&w=500',
-      label: 'Fast Moving'
-    },
-    {
-      id: 5,
-      name: 'Premium Coffee Powder',
-      price: '₹399',
-      image: 'https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=500',
-      label: 'Special Dish'
-    }
-  ];
+  // const featuredProducts = [...];
 
   const categories = [
     {
       title: 'Sweets & Snacks',
       description: 'Traditional delicacies made with authentic recipes',
       icon: Gift,
-      gradient: 'from-yellow-400 to-orange-500',
+      gradient: 'from-slate-600 to-blue-700',
       items: [
         'Boondi Appalam', 'Arisi Appalam', 'Milagu Appalam', 'Pappad Appalam', 
         'Seeni Appalam', 'Thenkuzhal Vadam', 'Vadai Vadam', 'Sago Vadam',
@@ -186,7 +155,7 @@ const Homepage: React.FC = () => {
       title: 'Pickles & Preserves',
       description: 'Tangy homemade pickles bursting with traditional flavors',
       icon: Crown,
-      gradient: 'from-green-400 to-blue-500',
+      gradient: 'from-green-500 to-blue-600',
       items: [
         'Elumichai Oorugai', 'Uppili Kothamalli Oorugai', 'Kara Narthangai Oorugai',
         'Boondi Oorugai', 'Mango Pickle', 'Mango Thokku', 'Vadu Mangai',
@@ -199,7 +168,7 @@ const Homepage: React.FC = () => {
       title: 'Premium Coffee Powder',
       description: 'Freshly ground coffee powder for authentic taste',
       icon: Coffee,
-      gradient: 'from-amber-400 to-brown-500',
+      gradient: 'from-slate-600 to-indigo-700',
       items: [
         'Filter Coffee Powder', 'Traditional Coffee Blend', 'Premium Arabica Coffee',
         'South Indian Coffee Mix', 'Organic Coffee Powder', 'Spiced Coffee Blend',
@@ -209,23 +178,8 @@ const Homepage: React.FC = () => {
     }
   ];
 
-  const testimonials = [
-    {
-      name: 'Priya Sharma',
-      text: 'The authentic taste reminds me of my grandmother\'s cooking. Pure quality!',
-      rating: 5
-    },
-    {
-      name: 'Rajesh Kumar',
-      text: 'Best pickles I\'ve ever tasted. The spice powders are incredibly fresh.',
-      rating: 5
-    },
-    {
-      name: 'Meera Patel',
-      text: 'Traditional flavors with modern packaging. Excellent quality products.',
-      rating: 5
-    }
-  ];
+  // testimonials reserved for future use
+  // const testimonials = [...];
 
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
@@ -241,20 +195,20 @@ const Homepage: React.FC = () => {
     }
   };
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % featuredProducts.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + featuredProducts.length) % featuredProducts.length);
-  };
+  // const nextSlide = () => {
+  //   setCurrentSlide((prev) => (prev + 1) % featuredProducts.length);
+  // };
+  // 
+  // const prevSlide = () => {
+  //   setCurrentSlide((prev) => (prev - 1 + featuredProducts.length) % featuredProducts.length);
+  // };
 
   const [heroRef, heroInView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [categoriesRef, categoriesInView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [storyRef, storyInView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-50 to-green-50">
+    <div className="min-h-screen bg-gradient-to-b from-slate-100 to-blue-100">
       <style dangerouslySetInnerHTML={{ __html: customStyles }} />
       {/* Header */}
       <header className="fixed top-0 w-full enhanced-header shadow-lg z-50">
@@ -277,8 +231,7 @@ const Homepage: React.FC = () => {
                 </div>
               </div>
               <div>
-                <span className="text-2xl font-bold corporate-blue">Shree Raaga</span>
-                <div className="text-sm font-semibold text-red-600 -mt-1 tracking-wide">SWAAD GHAR</div>
+                <span className="text-2xl font-bold corporate-blue tracking-tight">Shree Raaga SWAAD GHAR</span>
               </div>
             </div>
             
@@ -347,7 +300,7 @@ const Homepage: React.FC = () => {
           backgroundRepeat: 'no-repeat'
         }}
       >
-        
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/30 via-slate-900/20 to-transparent" />
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           animate={heroInView ? { opacity: 1, y: 0 } : {}}
@@ -379,17 +332,17 @@ const Homepage: React.FC = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={heroInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 1, delay: 0.5 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-amber-900"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white drop-shadow"
           >
             Welcome to <br />
-            <span className="corporate-blue">Shree Raaga SWAAD GHAR</span>
+            <span className="text-blue-200">Shree Raaga SWAAD GHAR</span>
           </motion.h1>
           
           <motion.p
             initial={{ opacity: 0, y: 50 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-lg md:text-xl lg:text-2xl mb-8 leading-relaxed max-w-3xl mx-auto corporate-blue"
+            className="text-lg md:text-xl lg:text-2xl mb-8 leading-relaxed max-w-3xl mx-auto text-white italic"
           >
             At Shree Raaga Swaad Ghar, we bring the timeless taste of tradition to your table. From tangy homemade pickles and aromatic podis to fresh ready-mix powders, pure chekku oils, rich ghee, handcrafted masala's, and premium coffee powder— every product is made with purity, care, and love.
           </motion.p>
@@ -419,7 +372,6 @@ const Homepage: React.FC = () => {
 
       {/* Premium Brand Values Section */}
       <section className="py-16 enhanced-section relative overflow-hidden">
-        <div className="watermark-logo">SWAAD</div>
         <div className="pattern-dots absolute inset-0"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
@@ -428,10 +380,10 @@ const Homepage: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold corporate-blue mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold corporate-blue mb-4 tracking-tight">
               Why Choose Shree Raaga SWAAD GHAR?
             </h2>
-            <p className="text-red-600 max-w-2xl mx-auto font-medium">
+            <p className="text-red-600 max-w-2xl mx-auto font-medium italic">
               Experience the perfect blend of tradition and quality in every product
             </p>
           </motion.div>
@@ -442,19 +394,19 @@ const Homepage: React.FC = () => {
                 icon: Crown,
                 title: "Premium Quality",
                 description: "Handpicked ingredients with no artificial additives",
-                color: "from-yellow-400 to-orange-500"
+                color: "from-blue-500 to-indigo-600"
               },
               {
                 icon: Leaf,
                 title: "100% Natural",
                 description: "Pure, organic, and traditionally prepared",
-                color: "from-green-400 to-emerald-500"
+                color: "from-slate-400 to-slate-600"
               },
               {
                 icon: Award,
                 title: "Heritage Recipes",
                 description: "Time-tested recipes passed down generations",
-                color: "from-amber-400 to-yellow-500"
+                color: "from-indigo-500 to-blue-600"
               },
               {
                 icon: Heart,
@@ -485,7 +437,7 @@ const Homepage: React.FC = () => {
       </section>
 
       {/* Categories Section */}
-      <section id="categories" ref={categoriesRef} className="py-20 bg-gradient-to-b from-amber-50 to-green-50 relative overflow-hidden">
+      <section id="categories" ref={categoriesRef} className="py-20 bg-gradient-to-b from-slate-100 via-blue-50 to-slate-100 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -493,10 +445,10 @@ const Homepage: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold corporate-blue mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold corporate-blue mb-4 tracking-tight">
               Our Categories
             </h2>
-            <p className="text-lg text-red-600 max-w-2xl mx-auto font-medium">
+            <p className="text-lg text-red-600 max-w-2xl mx-auto font-medium italic">
               Discover our carefully curated collection of authentic Indian flavors
             </p>
           </motion.div>
@@ -530,7 +482,7 @@ const Homepage: React.FC = () => {
                         <div className="p-2 bg-white/20 backdrop-blur-sm rounded-lg">
                           <IconComponent className="h-5 w-5 text-white" />
                         </div>
-                        <Crown className="h-4 w-4 text-yellow-300" />
+                        <Crown className="h-4 w-4 text-blue-200" />
                       </div>
                       <h3 className="text-lg font-bold text-white leading-tight">{category.title}</h3>
                     </div>
@@ -548,8 +500,8 @@ const Homepage: React.FC = () => {
                     <p className="text-red-600 leading-relaxed font-medium">{category.description}</p>
                     
                     {/* Product Preview */}
-                    <div className="space-y-2">
-                      <h4 className="font-semibold corporate-blue text-xs uppercase tracking-wide">Featured Items:</h4>
+                   <div className="space-y-2">
+                      <h4 className="font-semibold corporate-blue text-xs uppercase tracking-wide italic">Featured Items:</h4>
                       <div className="grid grid-cols-1 gap-1 text-xs">
                         {category.items.slice(0, 6).map((item, itemIndex) => {
                           const isFastMoving = ['Boondi Appalam', 'Sambar Podi', 'Mango Pickle', 'Coffee Powder'].includes(item);
@@ -596,65 +548,61 @@ const Homepage: React.FC = () => {
 
 
       {/* Brand Story Section */}
-      <section id="about" ref={storyRef} className="py-20 bg-gradient-to-r from-amber-50 via-green-50 to-amber-50">
+      <section id="about" ref={storyRef} className="py-20 bg-gradient-to-r from-slate-100 via-blue-50 to-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={storyInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="w-full h-96 bg-gradient-to-br from-amber-100 to-green-100 rounded-2xl shadow-lg flex items-center justify-center">
-                <img
-                  src="/logo.png"
-                  alt="Shree Raga SWAAD GHAR Logo"
-                  className="h-48 w-48 object-contain drop-shadow-xl"
-                  onError={(e) => {
-                    // Fallback to icon if logo fails to load
-                    e.currentTarget.style.display = 'none';
-                    e.currentTarget.nextElementSibling?.classList.remove('hidden');
-                  }}
-                />
-                <div className="hidden h-48 w-48 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center drop-shadow-xl">
-                  <Leaf className="h-24 w-24 text-green-600" />
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={storyInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            className="bg-white/90 backdrop-blur-sm border border-blue-100 rounded-2xl shadow-xl p-8 md:p-12"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+              <div className="flex justify-center">
+                <div className="w-full max-w-sm h-64 bg-gradient-to-br from-blue-50 to-slate-100 rounded-2xl shadow-lg flex items-center justify-center border border-blue-100">
+                  <img
+                    src="/logo.png"
+                    alt="Shree Raga SWAAD GHAR Logo"
+                    className="h-40 w-40 object-contain drop-shadow-xl"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                    }}
+                  />
+                  <div className="hidden h-40 w-40 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center drop-shadow-xl">
+                    <Leaf className="h-16 w-16 text-green-600" />
+                  </div>
                 </div>
               </div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={storyInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="space-y-6"
-            >
-              <h2 className="text-4xl md:text-5xl font-bold corporate-blue">
-                Our Heritage Story
-              </h2>
-              <p className="text-lg text-red-600 leading-relaxed font-medium">
-                Prepared the age-old way with handpicked ingredients and no artificial additives, our foods carry the true flavor of our heritage, straight from our kitchen to yours.
-              </p>
-              <p className="text-lg text-red-600 leading-relaxed font-medium">
-                Every product at Shree Raaga Swaad Ghar tells a story of tradition, passed down through generations of culinary expertise and refined with modern care.
-              </p>
-              
-              <div className="grid grid-cols-2 gap-6 pt-6">
-                <div className="text-center">
-                  <Award className="h-12 w-12 text-yellow-500 mx-auto mb-2" />
-                  <p className="font-semibold corporate-blue">Premium Quality</p>
-                </div>
-                <div className="text-center">
-                  <Leaf className="h-12 w-12 text-green-600 mx-auto mb-2" />
-                  <p className="font-semibold corporate-blue">Natural Ingredients</p>
+              <div className="lg:col-span-2 space-y-6">
+                <h2 className="text-4xl md:text-5xl font-bold corporate-blue tracking-tight">Our Heritage Story</h2>
+                <p className="text-lg text-slate-700 leading-relaxed font-medium italic">
+                  Prepared the age-old way with handpicked ingredients and no artificial additives, our foods carry the true flavor of our heritage, straight from our kitchen to yours.
+                </p>
+                <p className="text-lg text-slate-700 leading-relaxed font-medium italic">
+                  Every product at Shree Raaga Swaad Ghar tells a story of tradition, passed down through generations of culinary expertise and refined with modern care.
+                </p>
+                <p className="text-lg text-slate-700 leading-relaxed font-medium italic">
+                  Shree Raaga Swaad Ghar is where flavors sing the melody of tradition. Every jar of pickle, every spoon of podi, every drop of chekku oil and ghee is a tribute to timeless recipes passed down through generations. Blended with the purity of nature and the care of handmade preparation, our creations carry the essence of a bygone era, touched with the finesse of modern taste. Here, every bite is not just food — it’s a memory, a story, and a celebration of heritage.
+                </p>
+                <div className="grid grid-cols-2 gap-6 pt-2">
+                  <div className="text-center">
+                    <Award className="h-12 w-12 text-blue-600 mx-auto mb-2" />
+                    <p className="font-semibold corporate-blue italic">Premium Quality</p>
+                  </div>
+                  <div className="text-center">
+                    <Leaf className="h-12 w-12 text-green-600 mx-auto mb-2" />
+                    <p className="font-semibold corporate-blue italic">Natural Ingredients</p>
+                  </div>
                 </div>
               </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 corporate-blue-gradient">
+      <section id="contact" className="py-20 bg-gradient-to-r from-indigo-900 via-blue-900 to-indigo-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -662,10 +610,10 @@ const Homepage: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
               Get In Touch
             </h2>
-            <p className="text-xl text-white/95 max-w-2xl mx-auto font-medium">
+            <p className="text-xl text-white/90 max-w-2xl mx-auto font-medium italic">
               Ready to experience authentic flavors? Contact us today!
             </p>
           </motion.div>
@@ -677,19 +625,19 @@ const Homepage: React.FC = () => {
               transition={{ duration: 0.8 }}
               className="space-y-8"
             >
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
                 <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
                 <div className="space-y-4">
                   <div className="flex items-center space-x-4">
-                    <Phone className="h-6 w-6 text-red-300" />
+                    <Phone className="h-6 w-6 text-blue-200" />
                     <span className="text-white text-lg font-medium">+91 12345 67890</span>
                   </div>
                   <div className="flex items-center space-x-4">
-                    <Mail className="h-6 w-6 text-red-300" />
+                    <Mail className="h-6 w-6 text-blue-200" />
                     <span className="text-white text-lg font-medium">info@shreeragaswaadghar.com</span>
                   </div>
                   <div className="flex items-center space-x-4">
-                    <MapPin className="h-6 w-6 text-red-300" />
+                    <MapPin className="h-6 w-6 text-blue-200" />
                     <span className="text-white text-lg font-medium">Traditional Kitchen, India</span>
                   </div>
                 </div>
@@ -701,23 +649,23 @@ const Homepage: React.FC = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
                 <h3 className="text-2xl font-bold text-white mb-6">Send us a Message</h3>
                 <form className="space-y-4">
                   <input
                     type="text"
                     placeholder="Your Name"
-                    className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-red-400"
+                    className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-blue-400"
                   />
                   <input
                     type="email"
                     placeholder="Your Email"
-                    className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-red-400"
+                    className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-blue-400"
                   />
                   <textarea
                     rows={4}
                     placeholder="Your Message"
-                    className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-red-400 resize-none"
+                    className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-blue-400 resize-none"
                   ></textarea>
                   <button
                     type="submit"
