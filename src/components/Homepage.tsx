@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { Link } from 'react-router-dom';
 import {
   Menu,
   X,
@@ -125,54 +126,74 @@ const Homepage: React.FC = () => {
 
   const categories = [
     {
-      title: 'Sweets & Snacks',
-      description: 'Traditional delicacies made with authentic recipes',
+      title: 'Appalam / Papad Varieties',
+      description: 'Traditional papad varieties made with authentic recipes',
       icon: Gift,
-      gradient: 'from-slate-600 to-blue-700',
+      gradient: 'from-amber-600 to-orange-500',
       items: [
-        'Boondi Appalam', 'Arisi Appalam', 'Milagu Appalam', 'Pappad Appalam', 
-        'Seeni Appalam', 'Thenkuzhal Vadam', 'Vadai Vadam', 'Sago Vadam',
-        'Omappodi Vadam', 'Rice Flour Murukku', 'Besan Flour Murukku',
-        'Pottu Minappappu Murukku', 'Pottu Minappappu Vathal', 'Vathal with Red Chillies',
-        'Vathal without Chillies', 'Maavathal', 'Vadam with Salt', 'Fried Appalam',
-        'Thin Boondi', 'Small Boondi'
+        'Ulundu Appalam (Black Gram Papad)', 'Arisi Appalam (Rice Papad)', 
+        'Kizhangu Appalam (Tapioca Papad)', 'Payaru Appalam (Green Gram Papad)'
       ],
       image: 'https://images.pexels.com/photos/4110003/pexels-photo-4110003.jpeg?auto=compress&cs=tinysrgb&w=500'
     },
     {
-      title: 'Spice Powders & Cooking Essentials',
-      description: 'Aromatic powders for authentic flavors',
+      title: 'Vadam / Fryums Varieties',
+      description: 'Crispy traditional snacks and fryums',
       icon: Sparkles,
-      gradient: 'from-red-400 to-pink-500',
+      gradient: 'from-blue-600 to-indigo-500',
       items: [
-        'Munthiri Podi', 'Sambar Podi', 'Angaya Podi', 'Rasam Podi',
-        'Dried Coriander Powder', 'Chilli Powder', 'Pepper Powder',
-        'Jeera Powder', 'Turmeric Powder'
+        'Thenkuzhal Vadam (Crispy Rice Flour Snack)', 'Vella Vadam (Sweet Rice Snack)',
+        'Omappodi Vadam (Rice Flour Snack with Ajwain)', 'Murungai Vadam (Drumstick Leaves Snack)',
+        'Sago Vadam (Javvarisi Vadam)', 'Karuppu Milagu Vathal (Black Pepper Fryums)',
+        'Manathakkali Vathal (Black Nightshade Fryums)', 'Kothavarangai Vathal (Cluster Beans Fryums)',
+        'Ma Vathal (Mango Fryums)'
       ],
       image: 'https://images.pexels.com/photos/4198793/pexels-photo-4198793.jpeg?auto=compress&cs=tinysrgb&w=500'
     },
     {
-      title: 'Pickles & Preserves',
-      description: 'Tangy homemade pickles bursting with traditional flavors',
+      title: 'Podi / Powder Varieties',
+      description: 'Aromatic powders for authentic flavors',
       icon: Crown,
-      gradient: 'from-green-500 to-blue-600',
+      gradient: 'from-red-600 to-rose-500',
       items: [
-        'Elumichai Oorugai', 'Uppili Kothamalli Oorugai', 'Kara Narthangai Oorugai',
-        'Boondi Oorugai', 'Mango Pickle', 'Mango Thokku', 'Vadu Mangai',
-        'Inji Oorugai', 'Lemon Oorugai', 'Pudina Oorugai', 'Thakkali Oorugai',
-        'Mango Avakkai', 'Garlic Pickle', 'Fresh Boondi Pickle', 'Boondi with Curd'
+        'Idli Milagai Podi (Chilli Powder for Idli)', 'Instant Idli Milagai Podi (with Toor Dal)',
+        'Manjal Podi (Turmeric Powder)', 'Sambar Powder (Plain)', 'Sambar Powder (With Toor Dal)',
+        'Angaya Podi (Herbal Powder)', 'Rasam Powder (Plain)', 'Rasam Powder (With Toor Dal)',
+        'Malli Podi (Coriander Seed Powder)', 'Mint Powder', 'Cumin Powder', 'Pepper Powder'
       ],
       image: 'https://images.pexels.com/photos/4198015/pexels-photo-4198015.jpeg?auto=compress&cs=tinysrgb&w=500'
     },
     {
-      title: 'Premium Coffee Powder',
-      description: 'Freshly ground coffee powder for authentic taste',
-      icon: Coffee,
-      gradient: 'from-slate-600 to-indigo-700',
+      title: 'Herbal & Health Powders',
+      description: 'Natural health powders for wellness',
+      icon: Leaf,
+      gradient: 'from-emerald-600 to-green-500',
       items: [
-        'Filter Coffee Powder', 'Traditional Coffee Blend', 'Premium Arabica Coffee',
-        'South Indian Coffee Mix', 'Organic Coffee Powder', 'Spiced Coffee Blend',
-        'Cardamom Coffee Powder', 'Ginger Coffee Mix', 'Masala Coffee Powder'
+        'Ellu Urundai Mix (Sesame Laddu Mix)', 'Curry Leaves Powder', 'Coriander Leaves Powder',
+        'Tomato Thokku Powder', 'Mango Thokku Powder', 'Drumstick Leaves Powder',
+        'Avaram Flower Powder', 'Hibiscus Flower Powder', 'Pirandai Powder (Cissus Quadrangularis Powder)'
+      ],
+      image: 'https://images.pexels.com/photos/4198015/pexels-photo-4198015.jpeg?auto=compress&cs=tinysrgb&w=500'
+    },
+    {
+      title: 'Rice Mix Varieties',
+      description: 'Flavorful rice mix powders for quick meals',
+      icon: Package,
+      gradient: 'from-purple-600 to-indigo-500',
+      items: [
+        'Lemon Rice Mix', 'Tamarind Rice Mix', 'Curry Leaves Rice Mix', 'Mint Rice Mix',
+        'Peanut Rice Mix', 'Sesame Rice Mix', 'Black Gram Rice Mix', 'Horse Gram Rice Mix'
+      ],
+      image: 'https://images.pexels.com/photos/4110003/pexels-photo-4110003.jpeg?auto=compress&cs=tinysrgb&w=500'
+    },
+    {
+      title: 'Oils & Ghee',
+      description: 'Pure cold-pressed oils and traditional ghee',
+      icon: Coffee,
+      gradient: 'from-yellow-600 to-amber-500',
+      items: [
+        'Cold Pressed Gingelly Oil (Chekku Nallenai)', 'Cold Pressed Groundnut Oil (Chekku Kadalai Ennai)',
+        'Cold Pressed Coconut Oil (Chekku Thengai Ennai)', 'Traditional Ghee'
       ],
       image: 'https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=500'
     }
@@ -204,6 +225,11 @@ const Homepage: React.FC = () => {
   // };
 
   const [heroRef, heroInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const toSlug = (input: string): string =>
+    input
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '');
   const [categoriesRef, categoriesInView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [storyRef, storyInView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
@@ -217,7 +243,7 @@ const Homepage: React.FC = () => {
             <div className="flex items-center space-x-4">
               <div className="relative">
                 <img 
-                  src="/logo.png" 
+                  src="/logo.jpeg" 
                   alt="Shree Raga SWAAD GHAR Logo" 
                   className="h-16 w-16 object-contain drop-shadow-lg"
                   onError={(e) => {
@@ -315,7 +341,7 @@ const Homepage: React.FC = () => {
             className="mb-8 flex justify-center"
           >
             <img 
-              src="/logo.png" 
+              src="/logo.jpeg" 
               alt="Shree Raga SWAAD GHAR Logo" 
               className="h-20 w-20 md:h-24 md:w-24 object-contain drop-shadow-2xl"
               onError={(e) => {
@@ -431,7 +457,7 @@ const Homepage: React.FC = () => {
                   <p className="text-sm text-red-600 leading-relaxed font-medium">{value.description}</p>
                 </motion.div>
               );
-            })}
+            })}            
           </div>
         </div>
       </section>
@@ -453,28 +479,113 @@ const Homepage: React.FC = () => {
             </p>
           </motion.div>
 
-          <motion.div
-            variants={stagger}
-            initial="initial"
-            animate={categoriesInView ? "animate" : "initial"}
-            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6"
+          <div
+            className="w-full"
           >
-            {categories.map((category, index) => {
+            <Link to="/categories" className="inline-block">
+              <button className="mb-6 bg-gradient-to-r from-red-600 to-amber-600 text-white font-medium py-2 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 text-sm group">
+                <Package className="h-4 w-4" />
+                <span>View All Categories</span>
+                <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </button>
+            </Link>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              {categories.slice(0, 3).map((category, index) => {
+                const IconComponent = category.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    variants={fadeInUp}
+                    className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 bg-white border border-gray-100 hover:border-red-400"
+                  >
+                    {/* Header with Gradient Background */}
+                    <div className={`relative h-40 bg-gradient-to-br ${category.gradient} p-4 flex flex-col justify-between`}>
+                      {/* Decorative Pattern */}
+                      <div className="absolute inset-0 opacity-20">
+                        <div className="absolute top-2 right-2 w-12 h-12 border-2 border-white rounded-full"></div>
+                        <div className="absolute bottom-2 left-2 w-6 h-6 border border-white rounded-full"></div>
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 border border-white/50 rounded-full"></div>
+                      </div>
+                      
+                      {/* Icon and Title */}
+                      <div className="relative z-10">
+                        <div className="flex items-center space-x-2 mb-2">
+                          <div className="p-2 bg-white/20 backdrop-blur-sm rounded-lg">
+                            <IconComponent className="h-5 w-5 text-white" />
+                          </div>
+                          <Crown className="h-4 w-4 text-blue-200" />
+                        </div>
+                        <h3 className="text-lg font-bold text-white leading-tight">{category.title}</h3>
+                      </div>
+                      
+                      {/* Badge */}
+                      <div className="relative z-10 self-start">
+                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-white/20 text-white backdrop-blur-sm">
+                          {category.items.length} Products
+                        </span>
+                      </div>
+                    </div>
+                    
+                    {/* Content Section */}
+                    <div className="p-4 space-y-3">
+                    <p className="text-red-600 leading-relaxed font-medium">{category.description}</p>
+                    
+                    {/* Product Preview */}
+                   <div className="space-y-2">
+                      <h4 className="font-semibold corporate-blue text-xs uppercase tracking-wide italic">Featured Items:</h4>
+                      <div className="grid grid-cols-1 gap-1 text-xs">
+                        {category.items.slice(0, 6).map((item, itemIndex) => (
+                          <div key={itemIndex} className="flex items-center justify-between p-1 bg-gray-50 rounded-md hover:bg-gray-100 transition-colors duration-200">
+                            <div className="flex items-center space-x-1 flex-1">
+                              <div className="w-1.5 h-1.5 bg-green-500 rounded-full flex-shrink-0"></div>
+                              <span className="text-gray-700 truncate text-xs font-medium">{item}</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      {category.items.length > 6 && (
+                        <p className="text-xs text-red-600 font-medium">+{category.items.length - 6} more</p>
+                      )}
+                    </div>
+                    
+                    {/* Action Button */}
+                    <div className="pt-2">
+                      <Link to={`/category/${toSlug(category.title)}`}>
+                        <button className={`w-full bg-gradient-to-r ${category.gradient} hover:shadow-lg text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 group text-sm`}>
+                          <Package className="h-3 w-3" />
+                          <span>Explore</span>
+                          <ChevronRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+                  
+                  {/* Hover Effect Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-red-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none"></div>
+                </motion.div>
+              );
+            })}
+          </div>
+          
+          {/* Second Row - Bottom 3 Categories */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {categories.slice(3, 6).map((category, index) => {
               const IconComponent = category.icon;
               return (
                 <motion.div
-                  key={index}
+                  key={index + 3}
                   variants={fadeInUp}
                   className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 bg-white border border-gray-100 hover:border-red-400"
                 >
                   {/* Header with Gradient Background */}
                   <div className={`relative h-40 bg-gradient-to-br ${category.gradient} p-4 flex flex-col justify-between`}>
                     {/* Decorative Pattern */}
-                                          <div className="absolute inset-0 opacity-20">
-                        <div className="absolute top-2 right-2 w-12 h-12 border-2 border-white rounded-full"></div>
-                        <div className="absolute bottom-2 left-2 w-6 h-6 border border-white rounded-full"></div>
-                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 border border-white/50 rounded-full"></div>
-                      </div>
+                    <div className="absolute inset-0 opacity-20">
+                      <div className="absolute top-2 right-2 w-12 h-12 border-2 border-white rounded-full"></div>
+                      <div className="absolute bottom-2 left-2 w-6 h-6 border border-white rounded-full"></div>
+                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 border border-white/50 rounded-full"></div>
+                    </div>
                     
                     {/* Icon and Title */}
                     <div className="relative z-10">
@@ -497,52 +608,45 @@ const Homepage: React.FC = () => {
                   
                   {/* Content Section */}
                   <div className="p-4 space-y-3">
-                    <p className="text-red-600 leading-relaxed font-medium">{category.description}</p>
-                    
-                    {/* Product Preview */}
-                   <div className="space-y-2">
-                      <h4 className="font-semibold corporate-blue text-xs uppercase tracking-wide italic">Featured Items:</h4>
-                      <div className="grid grid-cols-1 gap-1 text-xs">
-                        {category.items.slice(0, 6).map((item, itemIndex) => {
-                          const isFastMoving = ['Boondi Appalam', 'Sambar Podi', 'Mango Pickle', 'Coffee Powder'].includes(item);
-                          const isSpecialDish = ['Pure Chekku Oil', 'Homemade Ghee', 'Premium Coffee Powder'].includes(item);
-                                                      return (
-                              <div key={itemIndex} className="flex items-center justify-between p-1 bg-gray-50 rounded-md hover:bg-gray-100 transition-colors duration-200">
-                                <div className="flex items-center space-x-1 flex-1">
-                                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full flex-shrink-0"></div>
-                                  <span className="text-gray-700 truncate text-xs font-medium">{item}</span>
-                                </div>
-                                {isFastMoving && (
-                                  <span className="fast-moving-label text-xs ml-1 flex-shrink-0">Fast</span>
-                                )}
-                                {isSpecialDish && (
-                                  <span className="special-dish-label text-xs ml-1 flex-shrink-0">Special</span>
-                                )}
-                              </div>
-                            );
-                        })}
-                      </div>
-                      {category.items.length > 6 && (
-                        <p className="text-xs text-red-600 font-medium">+{category.items.length - 6} more</p>
-                      )}
+                  <p className="text-red-600 leading-relaxed font-medium">{category.description}</p>
+                  
+                  {/* Product Preview */}
+                 <div className="space-y-2">
+                    <h4 className="font-semibold corporate-blue text-xs uppercase tracking-wide italic">Featured Items:</h4>
+                    <div className="grid grid-cols-1 gap-1 text-xs">
+                      {category.items.slice(0, 6).map((item, itemIndex) => (
+                        <div key={itemIndex} className="flex items-center justify-between p-1 bg-gray-50 rounded-md hover:bg-gray-100 transition-colors duration-200">
+                          <div className="flex items-center space-x-1 flex-1">
+                            <div className="w-1.5 h-1.5 bg-green-500 rounded-full flex-shrink-0"></div>
+                            <span className="text-gray-700 truncate text-xs font-medium">{item}</span>
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                    
-                    {/* Action Button */}
-                    <div className="pt-2">
+                    {category.items.length > 6 && (
+                      <p className="text-xs text-red-600 font-medium">+{category.items.length - 6} more</p>
+                    )}
+                  </div>
+                  
+                  {/* Action Button */}
+                  <div className="pt-2">
+                    <Link to={`/category/${toSlug(category.title)}`}>
                       <button className={`w-full bg-gradient-to-r ${category.gradient} hover:shadow-lg text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 group text-sm`}>
                         <Package className="h-3 w-3" />
                         <span>Explore</span>
                         <ChevronRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
                       </button>
-                    </div>
+                    </Link>
                   </div>
-                  
-                  {/* Hover Effect Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-red-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none"></div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
+                </div>
+                
+                {/* Hover Effect Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-red-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none"></div>
+              </motion.div>
+            );
+          })}
+        </div>
+        </div>
         </div>
       </section>
 
@@ -560,7 +664,7 @@ const Homepage: React.FC = () => {
               <div className="flex justify-center">
                 <div className="w-full max-w-sm h-64 bg-gradient-to-br from-blue-50 to-slate-100 rounded-2xl shadow-lg flex items-center justify-center border border-blue-100">
                   <img
-                    src="/logo.png"
+                    src="/logo.jpeg"
                     alt="Shree Raga SWAAD GHAR Logo"
                     className="h-40 w-40 object-contain drop-shadow-xl"
                     onError={(e) => {
@@ -575,13 +679,13 @@ const Homepage: React.FC = () => {
               </div>
               <div className="lg:col-span-2 space-y-6">
                 <h2 className="text-4xl md:text-5xl font-bold corporate-blue tracking-tight">Our Heritage Story</h2>
-                <p className="text-lg text-slate-700 leading-relaxed font-medium italic">
+                <p className="text-lg text-slate-700 leading-relaxed font-medium">
                   Prepared the age-old way with handpicked ingredients and no artificial additives, our foods carry the true flavor of our heritage, straight from our kitchen to yours.
                 </p>
-                <p className="text-lg text-slate-700 leading-relaxed font-medium italic">
+                <p className="text-lg text-slate-700 leading-relaxed font-medium">
                   Every product at Shree Raaga Swaad Ghar tells a story of tradition, passed down through generations of culinary expertise and refined with modern care.
                 </p>
-                <p className="text-lg text-slate-700 leading-relaxed font-medium italic">
+                <p className="text-lg text-slate-700 leading-relaxed font-medium">
                   Shree Raaga Swaad Ghar is where flavors sing the melody of tradition. Every jar of pickle, every spoon of podi, every drop of chekku oil and ghee is a tribute to timeless recipes passed down through generations. Blended with the purity of nature and the care of handmade preparation, our creations carry the essence of a bygone era, touched with the finesse of modern taste. Here, every bite is not just food — it’s a memory, a story, and a celebration of heritage.
                 </p>
                 <div className="grid grid-cols-2 gap-6 pt-2">
