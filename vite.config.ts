@@ -13,6 +13,6 @@ export default defineConfig({
     sourcemap: false,
   },
   preview: {
-    allowedHosts: ['shree-raga-swaad-ghar.onrender.com']
+    allowedHosts: ['shree-raga-swaad-ghar.onrender.com', 'hub-yno6.onrender.com']
   },
 });
