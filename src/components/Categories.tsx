@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, Package } from 'lucide-react';
+import { ChevronRight, Package, ArrowLeft } from 'lucide-react';
 
 // Import the categories data
 import { categories } from './CategoryPage';
@@ -14,6 +14,14 @@ const Categories: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-gray-100 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Back Navigation */}
+        <div className="mb-8">
+          <Link to="/" className="text-gray-600 hover:text-gray-900 flex items-center space-x-1 text-sm">
+            <ArrowLeft className="h-4 w-4" />
+            <span>Back to Home</span>
+          </Link>
+        </div>
+        
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-amber-600">
             Our Categories

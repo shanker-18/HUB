@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
+import { useDemo } from '../contexts/DemoContext';
 import {
   Menu,
   X,
@@ -120,6 +121,7 @@ const customStyles = `
 
 const Homepage: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { currentUser } = useDemo();
   // carousel state reserved for future use
 
   // const featuredProducts = [...];
@@ -313,6 +315,15 @@ const Homepage: React.FC = () => {
           </motion.div>
         )}
       </header>
+
+      {/* Demo Mode Banner */}
+      <div className="bg-yellow-400 text-yellow-900 px-4 py-2 text-center text-sm font-medium">
+        {currentUser && (
+          <span className="ml-2">
+            | Logged in as: {currentUser.name}
+          </span>
+        )}
+      </div>
 
       {/* Hero Section */}
       <section
