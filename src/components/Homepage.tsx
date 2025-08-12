@@ -329,15 +329,8 @@ const Homepage: React.FC = () => {
       <section
         id="home"
         ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
-        style={{
-          backgroundImage: 'linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.1)), url(/b86eea1b-b30b-4dae-bcf5-f0ab33bb633b.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
+        className="relative min-h-screen flex items-center justify-center"
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/30 via-slate-900/20 to-transparent" />
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           animate={heroInView ? { opacity: 1, y: 0 } : {}}
@@ -369,17 +362,17 @@ const Homepage: React.FC = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={heroInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 1, delay: 0.5 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white drop-shadow"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-gray-900"
           >
             Welcome to <br />
-            <span className="text-blue-200">Shree Raaga SWAAD GHAR</span>
+            <span className="text-blue-700">Shree Raaga SWAAD GHAR</span>
           </motion.h1>
           
           <motion.p
             initial={{ opacity: 0, y: 50 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-lg md:text-xl lg:text-2xl mb-8 leading-relaxed max-w-3xl mx-auto text-white italic"
+            className="text-lg md:text-xl lg:text-2xl mb-8 leading-relaxed max-w-3xl mx-auto text-gray-700 italic"
           >
             At Shree Raaga Swaad Ghar, we bring the timeless taste of tradition to your table. From tangy homemade pickles and aromatic podis to fresh ready-mix powders, pure chekku oils, rich ghee, handcrafted masala's, and premium coffee powder— every product is made with purity, care, and love.
           </motion.p>
