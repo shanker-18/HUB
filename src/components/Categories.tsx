@@ -31,7 +31,7 @@ const Categories: React.FC = () => {
           </p>
         </div>
         
-        {/* Grid layout with 3 items per row for larger screens */}
+         {/* Grid layout with 3 items per row for larger screens; page retained in case it's bookmarked */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* First row - 3 categories */}
           {categories.slice(0, 3).map((category, index) => (

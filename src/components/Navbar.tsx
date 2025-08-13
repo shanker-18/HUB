@@ -37,7 +37,7 @@ const Navbar: React.FC = () => {
         {/* Navigation */}
         <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-700">
           <a href="/#home" className="hover:text-red-600 transition-colors duration-200">Home</a>
-          <Link to="/categories" className="hover:text-red-600 transition-colors duration-200">Categories</Link>
+          <a href="/#categories" className="hover:text-red-600 transition-colors duration-200">Categories</a>
           <a href="/#about" className="hover:text-red-600 transition-colors duration-200">About</a>
           <a href="/#contact" className="hover:text-red-600 transition-colors duration-200">Contact</a>
         </nav>
@@ -68,11 +68,11 @@ const Navbar: React.FC = () => {
           </Link>
 
           {/* Shop Button */}
-          <Link to="/categories">
+          <a href="/#categories">
             <button className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-red-600 to-amber-600 text-white text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
               <span>Shop Now</span>
             </button>
-          </Link>
+          </a>
         </div>
       </div>
     </header>

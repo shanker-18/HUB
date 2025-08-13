@@ -22,7 +22,7 @@ const CartPage: React.FC = () => {
       
       // Convert cart items to order format
       const orderItems = cartItems.map(item => ({
-        product_name: item.name,
+        product_name: item.product_name,
         quantity: item.quantity,
         price: item.price,
         category: item.category
@@ -51,7 +51,7 @@ const CartPage: React.FC = () => {
     
     const selectedCartItems = cartItems.filter(item => selectedItems.includes(item.id));
     const orderItems = selectedCartItems.map(item => ({
-      product_name: item.name,
+      product_name: item.product_name,
       quantity: item.quantity,
       price: item.price,
       category: item.category
@@ -92,7 +92,7 @@ const CartPage: React.FC = () => {
             <p className="text-gray-600 mb-8 max-w-md mx-auto">
               Looks like you haven't added any items to your cart yet. Start shopping to discover our amazing products!
             </p>
-            <Link to="/categories">
+            <Link to="/#categories">
               <button className="bg-gradient-to-r from-red-600 to-amber-600 text-white font-medium py-3 px-8 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105">
                 Start Shopping
               </button>
@@ -145,7 +145,7 @@ const CartPage: React.FC = () => {
 
                     {/* Product Details */}
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold text-gray-800 truncate">{item.name}</h3>
+                      <h3 className="font-semibold text-gray-800 truncate">{item.product_name}</h3>
                       <p className="text-sm text-gray-500">{item.category}</p>
                       <p className="text-lg font-bold text-red-600">₹{item.price}</p>
                     </div>
@@ -223,7 +223,7 @@ const CartPage: React.FC = () => {
                   )}
                 </button>
                 
-                <Link to="/categories">
+                <Link to="/#categories">
                   <button className="w-full border border-gray-300 text-gray-700 font-medium py-3 px-6 rounded-lg hover:bg-gray-50 transition-all duration-300">
                     Continue Shopping
                   </button>

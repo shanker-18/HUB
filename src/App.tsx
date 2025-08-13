@@ -3,10 +3,12 @@ import { Route, Routes } from 'react-router-dom';
 import Homepage from './components/Homepage';
 import CategoryPage from './components/CategoryPage';
 import Categories from './components/Categories';
+import CartPage from './components/CartPage';
 import Login from './components/Login';
 import Register from './components/Register';
 import OrderDetails from './components/OrderDetails';
 import OrderSummary from './components/OrderSummary';
+import ProductDetails from './components/ProductDetails';
 import Navbar from './components/Navbar';
 import { DemoProvider } from './contexts/DemoContext';
 
@@ -19,10 +21,12 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/category/:categoryName" element={<CategoryPage />} />
+          <Route path="/cart" element={<CartPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/order-details" element={<OrderDetails />} />
           <Route path="/order-summary" element={<OrderSummary />} />
+          <Route path="/product-details" element={<ProductDetails />} />
         </Routes>
       </div>
     </DemoProvider>

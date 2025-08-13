@@ -128,76 +128,62 @@ const Homepage: React.FC = () => {
 
   const categories = [
     {
-      title: 'Appalam / Papad Varieties',
-      description: 'Traditional papad varieties made with authentic recipes',
-      icon: Gift,
-      gradient: 'from-amber-600 to-orange-500',
-      items: [
-        'Ulundu Appalam (Black Gram Papad)', 'Arisi Appalam (Rice Papad)', 
-        'Kizhangu Appalam (Tapioca Papad)', 'Payaru Appalam (Green Gram Papad)'
-      ],
-      image: 'https://images.pexels.com/photos/4110003/pexels-photo-4110003.jpeg?auto=compress&cs=tinysrgb&w=500'
-    },
-    {
-      title: 'Vadam / Fryums Varieties',
-      description: 'Crispy traditional snacks and fryums',
-      icon: Sparkles,
-      gradient: 'from-blue-600 to-indigo-500',
-      items: [
-        'Thenkuzhal Vadam (Crispy Rice Flour Snack)', 'Vella Vadam (Sweet Rice Snack)',
-        'Omappodi Vadam (Rice Flour Snack with Ajwain)', 'Murungai Vadam (Drumstick Leaves Snack)',
-        'Sago Vadam (Javvarisi Vadam)', 'Karuppu Milagu Vathal (Black Pepper Fryums)',
-        'Manathakkali Vathal (Black Nightshade Fryums)', 'Kothavarangai Vathal (Cluster Beans Fryums)',
-        'Ma Vathal (Mango Fryums)'
-      ],
-      image: 'https://images.pexels.com/photos/4198793/pexels-photo-4198793.jpeg?auto=compress&cs=tinysrgb&w=500'
-    },
-    {
-      title: 'Podi / Powder Varieties',
-      description: 'Aromatic powders for authentic flavors',
+      title: 'Powders',
+      description: 'Traditional cooking powders made fresh without additives',
       icon: Crown,
       gradient: 'from-red-600 to-rose-500',
       items: [
-        'Idli Milagai Podi (Chilli Powder for Idli)', 'Instant Idli Milagai Podi (with Toor Dal)',
-        'Manjal Podi (Turmeric Powder)', 'Sambar Powder (Plain)', 'Sambar Powder (With Toor Dal)',
-        'Angaya Podi (Herbal Powder)', 'Rasam Powder (Plain)', 'Rasam Powder (With Toor Dal)',
-        'Malli Podi (Coriander Seed Powder)', 'Mint Powder', 'Cumin Powder', 'Pepper Powder'
-      ],
-      image: 'https://images.pexels.com/photos/4198015/pexels-photo-4198015.jpeg?auto=compress&cs=tinysrgb&w=500'
+        'Turmeric Powder', 'Idly Powder', 'Milagu (Pepper) Powder', 'Rasam Powder',
+        'Jeera Powder', 'Vathal Powder', 'Malli (Coriander) Powder', 'Puliyokuzhambu Powder'
+      ]
     },
     {
-      title: 'Herbal & Health Powders',
-      description: 'Natural health powders for wellness',
-      icon: Leaf,
+      title: 'Mixes',
+      description: 'Ready-to-cook mixes for quick authentic meals',
+      icon: Package,
+      gradient: 'from-amber-600 to-orange-500',
+      items: [
+        'Puliyotharai (Tamarind) Mix', 'Vathakkuzhambu (Dried veg. Gravy)', 'Vathakkuzhambu Mix'
+      ]
+    },
+    {
+      title: 'Vathal',
+      description: 'Sun-dried traditional vathals ready to fry',
+      icon: Sparkles,
+      gradient: 'from-blue-600 to-indigo-500',
+      items: [
+        'Seeni Avarai Vathal', 'Sundakkai Vathal', 'Manathakkali Vathal', 'Mithukku Vathal',
+        'Koozh Vathal', 'Vendaikkai Vathal', 'Pagalkkai Vathal', 'Morr Milagai Vathal'
+      ]
+    },
+    {
+      title: 'Appalam',
+      description: 'Crispy appalams made from quality ingredients',
+      icon: Gift,
       gradient: 'from-emerald-600 to-green-500',
       items: [
-        'Ellu Urundai Mix (Sesame Laddu Mix)', 'Curry Leaves Powder', 'Coriander Leaves Powder',
-        'Tomato Thokku Powder', 'Mango Thokku Powder', 'Drumstick Leaves Powder',
-        'Avaram Flower Powder', 'Hibiscus Flower Powder', 'Pirandai Powder (Cissus Quadrangularis Powder)'
-      ],
-      image: 'https://images.pexels.com/photos/4198015/pexels-photo-4198015.jpeg?auto=compress&cs=tinysrgb&w=500'
+        'Pai Appalam', 'Kizangu Appalam', 'Sovi Appalam', 'Ulundhu (Blackgram) Appalam',
+        'Arisi Appalam', 'Garlic Appalam', 'Ilai Vadaam'
+      ]
     },
     {
-      title: 'Rice Mix Varieties',
-      description: 'Flavorful rice mix powders for quick meals',
-      icon: Package,
+      title: 'Pickles',
+      description: 'Homemade pickles with medicinal benefits and rich taste',
+      icon: Heart,
       gradient: 'from-purple-600 to-indigo-500',
       items: [
-        'Lemon Rice Mix', 'Tamarind Rice Mix', 'Curry Leaves Rice Mix', 'Mint Rice Mix',
-        'Peanut Rice Mix', 'Sesame Rice Mix', 'Black Gram Rice Mix', 'Horse Gram Rice Mix'
-      ],
-      image: 'https://images.pexels.com/photos/4110003/pexels-photo-4110003.jpeg?auto=compress&cs=tinysrgb&w=500'
+        'Salted Lemon', 'Lemon Pickle', 'Avakkai Pickle', 'Kidarangakai Pickle', 'Inji (Ginger) Pickle',
+        'Mavadu Pickle', 'Kovaikkai Pickle', 'Mudakatthan Pickle', 'Banana Stem Pickle', 'Kongura Pickle'
+      ]
     },
     {
-      title: 'Oils & Ghee',
-      description: 'Pure cold-pressed oils and traditional ghee',
+      title: 'Oils',
+      description: 'Pure chekku (cold-pressed) oils for cooking and wellness',
       icon: Coffee,
       gradient: 'from-yellow-600 to-amber-500',
       items: [
-        'Cold Pressed Gingelly Oil (Chekku Nallenai)', 'Cold Pressed Groundnut Oil (Chekku Kadalai Ennai)',
-        'Cold Pressed Coconut Oil (Chekku Thengai Ennai)', 'Traditional Ghee'
-      ],
-      image: 'https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=500'
+        'Cekku Groundnut Oil', 'Cekku Coconut Oil', 'Cekku Gingelly Oil'
+      ]
     }
   ];
 
@@ -210,13 +196,7 @@ const Homepage: React.FC = () => {
     transition: { duration: 0.8 }
   };
 
-  const stagger = {
-    animate: {
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
+  
 
   // const nextSlide = () => {
   //   setCurrentSlide((prev) => (prev + 1) % featuredProducts.length);
@@ -273,10 +253,12 @@ const Homepage: React.FC = () => {
                   {item}
                 </a>
               ))}
-              <button className="flex items-center space-x-1 bg-gradient-to-r from-red-600 to-red-500 text-white px-4 py-2 rounded-full hover:from-red-700 hover:to-red-600 transition-all duration-300 transform hover:scale-105">
-                <ShoppingCart className="h-4 w-4" />
-                <span>Cart</span>
-              </button>
+              <Link to="/cart">
+                <button className="flex items-center space-x-1 bg-gradient-to-r from-red-600 to-red-500 text-white px-4 py-2 rounded-full hover:from-red-700 hover:to-red-600 transition-all duration-300 transform hover:scale-105">
+                  <ShoppingCart className="h-4 w-4" />
+                  <span>Cart</span>
+                </button>
+              </Link>
             </nav>
 
             <button
@@ -307,10 +289,12 @@ const Homepage: React.FC = () => {
                     {item}
                   </a>
               ))}
-              <button className="w-full flex items-center justify-center space-x-1 bg-gradient-to-r from-red-600 to-red-500 text-white px-4 py-2 rounded-full">
-                <ShoppingCart className="h-4 w-4" />
-                <span>Cart</span>
-              </button>
+              <Link to="/cart" className="w-full inline-block">
+                <button className="w-full flex items-center justify-center space-x-1 bg-gradient-to-r from-red-600 to-red-500 text-white px-4 py-2 rounded-full">
+                  <ShoppingCart className="h-4 w-4" />
+                  <span>Cart</span>
+                </button>
+              </Link>
             </div>
           </motion.div>
         )}
@@ -483,17 +467,7 @@ const Homepage: React.FC = () => {
             </p>
           </motion.div>
 
-          <div
-            className="w-full"
-          >
-            <Link to="/categories" className="inline-block">
-              <button className="mb-6 bg-gradient-to-r from-red-600 to-amber-600 text-white font-medium py-2 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 text-sm group">
-                <Package className="h-4 w-4" />
-                <span>View All Categories</span>
-                <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </button>
-            </Link>
-            
+            <div className="w-full">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               {categories.slice(0, 3).map((category, index) => {
                 const IconComponent = category.icon;
